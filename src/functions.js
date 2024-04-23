@@ -30,4 +30,49 @@ function sortArray(array) {
   return sorted;
 }
 
+// function deleteNode(value, root) {
+//   // if (root === null) return null;
+
+//   if (value === root.data) {
+//     // Case 1: Leaf node
+//     if (root.left === null && root.right === null) {
+//       return null;
+//     }
+
+//     // Case 2: Node has only one child
+//     if (root.left === null) {
+//       return root.right;
+//     }
+
+//     if (root.right === null) {
+//       return root.left;
+//     }
+//     // Case 3: node has 2 children
+//     if (root.left !== null && root.right !== null) {
+//       let prev = root;
+//       let successor = root.right;
+//       while (successor.left !== null) {
+//         prev = successor;
+//         successor = successor.left;
+//       }
+
+//       root.data = successor.data;
+
+//       if (successor.right !== null) {
+//         prev.left = successor.right;
+//       } else {
+//         prev.left = null;
+//       }
+
+//       return root;
+//     }
+//   } else {
+//     value < root.data
+//       ? (root.left = deleteNode(value, root.left))
+//       : (root.right = deleteNode(value, root.right));
+//   }
+
+//   return root;
+// }
+
 export { prettyPrint, sortArray };
