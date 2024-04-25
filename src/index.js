@@ -28,8 +28,18 @@ Tree.insertNode(82, Tree.root);
 Tree.insertNode(83, Tree.root);
 Tree.insertNode(84, Tree.root);
 console.log(prettyPrint(Tree.root));
-Tree.deleteNode(50, Tree.root);
-console.log(prettyPrint(Tree.root));
+// Tree.deleteNode(50, Tree.root);
+// console.log(prettyPrint(Tree.root));
+// console.log(Tree.find(82, Tree.root));
+console.log("first level", Tree.levelOrder(Tree.root, mult));
+console.log("second level", Tree.levelOrderRecursion(Tree.root));
+console.log(Tree.root);
+
+console.log("inOrder:", Tree.inOrder(Tree.root, mult));
+
+console.log(Tree.root);
+console.log("pre:", Tree.preOrder(Tree.root));
+// console.log("post:", Tree.postORder(Tree.root));
 // function component() {
 //   const element = document.createElement("div");
 
@@ -37,3 +47,20 @@ console.log(prettyPrint(Tree.root));
 
 //   return element;
 // }
+// function appendToArray(value, arr = []) {
+//   arr.push(value);
+//   return arr;
+// }
+
+// console.log(appendToArray(1)); // Output: [1]
+// console.log(appendToArray(2)); // Output: [1, 2]
+
+// let arara = [];
+
+function mult(node) {
+  const modifiedNode = node.data * 2;
+  // node.data = node.data * 2;
+
+  console.log(node.data * 2);
+  return modifiedNode;
+}
