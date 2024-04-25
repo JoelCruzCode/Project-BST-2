@@ -75,4 +75,25 @@ function sortArray(array) {
 //   return root;
 // }
 
+// function preOrder(root, callBack) {
+//   if (root === null) return [];
+
+//   let arr = [];
+
+//   // Process the current node
+//   root = callBack ? callBack(root) : root;
+//   arr.push(root);
+
+//   // Traverse the left subtree
+//   let leftSubtree = preOrder(root.left, callBack);
+
+//   // Traverse the right subtree
+//   let rightSubtree = preOrder(root.right, callBack);
+
+//   // Concatenate the arrays obtained from the left and right subtrees
+//   arr = arr.concat(leftSubtree, rightSubtree);
+
+//   return arr;
+// }
+
 export { prettyPrint, sortArray };
