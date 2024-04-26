@@ -96,4 +96,22 @@ function sortArray(array) {
 //   return arr;
 // }
 
+// function levelOrder2(callBack) {
+//   // traverse the tree in breadth-first level order and provide each node as an argument to the callback
+//   const queue = [root];
+//   const levelOrderList = [];
+//   while (queue.length !== 0) {
+//     const currentNode = queue.shift();
+
+//     callBack ? callBack(currentNode) : levelOrderList.push(currentNode);
+
+//     const enqueue = [currentNode?.left, currentNode?.right].filter(
+//       (value) => value
+//     );
+
+//     queue.push(...enqueue);
+//   }
+//   if (levelOrderList.length > 0) return levelOrderList;
+// }
+
 export { prettyPrint, sortArray };
