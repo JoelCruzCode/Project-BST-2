@@ -1,8 +1,4 @@
 import TreeNode from "./tree-node.js.";
-import { prettyPrint, sortArray } from "./functions";
-
-// const unsortedArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-// const sortedArray = sortArray(unsortedArray);
 
 function BST(array) {
   let root = buildTree(array);
@@ -91,6 +87,7 @@ function BST(array) {
   }
 
   function levelOrder(root, callBack) {
+    // traverse the tree in breadth-first level order and provide each node as an argument to the callback
     const queue = [];
     const levelOrderList = [];
 
@@ -106,26 +103,7 @@ function BST(array) {
     if (levelOrderList.length > 0) return levelOrderList;
   }
 
-  function levelOrder2(callBack) {
-    // traverse the tree in breadth-first level order and provide each node as an argument to the callback
-    const queue = [root];
-    const levelOrderList = [];
-    while (queue.length !== 0) {
-      const currentNode = queue.shift();
-
-      callBack ? callBack(currentNode) : levelOrderList.push(currentNode);
-
-      const enqueue = [currentNode?.left, currentNode?.right].filter(
-        (value) => value
-      );
-
-      queue.push(...enqueue);
-    }
-    if (levelOrderList.length > 0) return levelOrderList;
-  }
-
   function inOrder(root, callBack, inOrderList = []) {
-    // L D R
     if (root === null) return null;
 
     inOrder(root.left, callBack, inOrderList);
@@ -138,8 +116,6 @@ function BST(array) {
   }
 
   function preOrder(root, callBack, preOrderList = []) {
-    // D L R
-
     if (root === null) return null;
 
     callBack ? callBack(root) : preOrderList.push(root.data);
@@ -152,8 +128,6 @@ function BST(array) {
   }
 
   function postOrder(root, callBack, postOrderList = []) {
-    // L R D
-
     if (root === null) return null;
 
     postOrder(root.left, callBack, postOrderList);
@@ -165,16 +139,64 @@ function BST(array) {
     if (postOrderList.length > 0) return postOrderList;
   }
 
+  function height(root, h = 0) {
+    if (root === null) return -1;
+
+    let left = height(root.left, h);
+
+    let right = height(root.right, h);
+    // console.log(left, root.data, right, root.data);
+    return left > right ? left + 1 : right + 1;
+  }
+
+  function depth(root, node, d = 0) {
+    if (root === null) {
+      return -1;
+    }
+    if (root === node) return d;
+    d++;
+    let left = depth(root.left, node, d);
+    let right = depth(root.right, node, d);
+
+    // node doesnt exist
+    if (left === -1 && right === -1) {
+      return -1;
+    }
+    if (left !== -1) left;
+    return right;
+  }
+
+  function isBalanced(root) {
+    if (root === null) return true; // An empty tree is considered balanced
+
+    // Check if the heights of the left and right subtrees differ by at most one
+    if (Math.abs(height(root.left) - height(root.right)) > 1) {
+      return false;
+    }
+
+    // Recursively check if both left and right subtrees are balanced
+    return isBalanced(root.left) && isBalanced(root.right);
+  }
+
+  function reBalance(root) {
+    const inOrderList = inOrder(root);
+    this.root = buildTree(inOrderList);
+    return this.root;
+  }
+
   return {
     root,
     insertNode,
     deleteNode,
     find,
     levelOrder,
-    levelOrderRecursion,
     inOrder,
     preOrder,
     postOrder,
+    height,
+    depth,
+    isBalanced,
+    reBalance,
   };
 }
 
